@@ -5,26 +5,112 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Delta Schools | Primary 4 English</title>
   <style>
-    :root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#475569;--brand:#166534;--line:#e2e8f0;--shadow:0 10px 25px rgba(0,0,0,.08);--radius:18px;}
+    :root{
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --brand:#166534;      /* school green */
+      --accent:#fbbf24;     /* accent */
+      --line:#e2e8f0;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+      --radius:18px;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);}
-    .wrap{max-width:1000px;margin:0 auto;padding:18px 16px 40px}
-    .header{background:linear-gradient(135deg, rgba(22,101,52,.12), rgba(251,191,36,.18));border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-    .brand{display:flex;gap:14px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;box-shadow:0 6px 14px rgba(0,0,0,.06);font-size:28px;}
-    .titles h1{margin:0;font-size:22px}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 0%, #e9f5ff 0%, transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, #fff7db 0%, transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+    .header{
+      background: linear-gradient(135deg, rgba(22,101,52,.12), rgba(251,191,36,.18));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .brand{display:flex;gap:14px;align-items:center;min-width:260px;}
+    .logo{
+      width:56px;height:56px;border-radius:14px;
+      background:#fff;border:1px solid var(--line);
+      display:grid;place-items:center;
+      box-shadow:0 6px 14px rgba(0,0,0,.06);
+      font-size:28px;
+    }
+    .titles h1{margin:0;font-size:22px;line-height:1.2}
     .titles p{margin:4px 0 0;color:var(--muted);font-size:14px}
-    .grid{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:.15s}
-    .card:hover{transform:translateY(-2px)}
-    .tag{display:inline-flex;gap:8px;font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:6px 10px;background:#fbfdff;margin-bottom:10px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+    .pill{
+      background:#fff;border:1px solid var(--line);
+      padding:8px 12px;border-radius:999px;
+      font-size:13px;color:var(--muted);
+      display:flex;gap:8px;align-items:center;
+    }
+    .pill b{color:var(--text)}
+    .controls{
+      margin:16px 0 10px;
+      display:flex;gap:12px;flex-wrap:wrap;
+      align-items:center;justify-content:space-between;
+    }
+    .search{
+      flex:1;min-width:240px;
+      background:#fff;border:1px solid var(--line);
+      border-radius:999px;padding:10px 14px;
+      display:flex;align-items:center;gap:10px;
+      box-shadow:0 6px 14px rgba(0,0,0,.05);
+    }
+    .search input{border:0;outline:0;width:100%;font-size:14px;background:transparent}
+    .hint{color:var(--muted);font-size:13px}
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:14px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.10);
+    }
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;color:var(--muted);
+      border:1px dashed var(--line);
+      border-radius:999px;padding:6px 10px;
+      background:#fbfdff;margin-bottom:10px;
+    }
     .card h2{margin:0 0 8px;font-size:18px}
-    .card p{margin:0 0 14px;color:var(--muted);font-size:14px;line-height:1.5}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer;text-decoration:none;color:var(--text);font-weight:700;font-size:14px;width:100%}
+    .card p{margin:0 0 14px;color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:10px 12px;border-radius:12px;
+      border:1px solid var(--line);background:#fff;
+      cursor:pointer;text-decoration:none;color:var(--text);
+      font-weight:700;font-size:14px;width:100%;
+    }
     .btn.primary{background:var(--brand);border-color:rgba(22,101,52,.25);color:#fff}
+    .btn.secondary{background:#fff7db;border-color:rgba(251,191,36,.45)}
     .footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="header">
@@ -35,47 +121,87 @@
           <p>Primary 4 • English • Units</p>
         </div>
       </div>
-      <div style="color:var(--muted);font-size:13px">Choose a Unit folder to start</div>
+
+      <div class="meta">
+        <div class="pill">🗂️ <b>Units:</b> <span id="unitCount">5</span></div>
+        <div class="pill">🔊 <b>Audio:</b> Tap once then play</div>
+      </div>
     </div>
 
-    <div class="grid">
-      <div class="card">
+    <div class="controls">
+      <div class="search" title="Search units and story">
+        🔎
+        <input id="q" type="text" placeholder="Search… (Unit 1, Unit 3, Story, Kite…)" />
+      </div>
+      <div class="hint">Choose a unit folder to start, or open the story directly.</div>
+    </div>
+
+    <div class="grid" id="cards">
+      <!-- Units -->
+      <div class="card" data-title="Unit 1 lessons story">
         <div class="tag">📁 Unit Folder</div>
         <h2>Unit 1</h2>
         <p>Lessons + Story</p>
         <a class="btn primary" href="Unit%201/">Open Unit 1 ▶</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Unit 2 lessons">
         <div class="tag">📁 Unit Folder</div>
         <h2>Unit 2</h2>
         <p>Lessons</p>
         <a class="btn primary" href="Unit%202/">Open Unit 2 ▶</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Unit 3 lessons">
         <div class="tag">📁 Unit Folder</div>
         <h2>Unit 3</h2>
         <p>Lessons</p>
         <a class="btn primary" href="Unit%203/">Open Unit 3 ▶</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Unit 4 lessons">
         <div class="tag">📁 Unit Folder</div>
         <h2>Unit 4</h2>
         <p>Lessons</p>
         <a class="btn primary" href="Unit%204/">Open Unit 4 ▶</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-title="Unit 5 lessons">
         <div class="tag">📁 Unit Folder</div>
         <h2>Unit 5</h2>
         <p>Lessons</p>
         <a class="btn primary" href="Unit%205/">Open Unit 5 ▶</a>
       </div>
+
+      <!-- Story (root file) -->
+      <div class="card" data-title="story lost kite audio reading">
+        <div class="tag">📖 Story • Audio</div>
+        <h2>The Lost Kite</h2>
+        <p>Open the story directly from the homepage.</p>
+        <a class="btn secondary" href="Story%20Prime%204%20The%20Lost%20Kite.html">Open Story ▶</a>
+      </div>
     </div>
 
+    <div class="footer">
+      👩‍🏫 Tip: If audio doesn’t play on iPhone, tap once anywhere on the page, then try again.
+    </div>
+  </div>
+
+  <script>
+    // Count unit cards
+    const cards = Array.from(document.querySelectorAll("#cards .card"));
+    const unitCards = cards.filter(c => (c.querySelector(".tag")?.textContent || "").includes("Unit Folder"));
+    document.getElementById("unitCount").textContent = unitCards.length;
+
+    // Search filter
+    const q = document.getElementById("q");
+    q.addEventListener("input", () => {
+      const term = q.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const hay = (card.getAttribute("data-title") || "").toLowerCase();
+        card.style.display = hay.includes(term) ? "" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
-
-
