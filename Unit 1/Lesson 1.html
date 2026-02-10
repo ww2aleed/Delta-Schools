@@ -43,10 +43,44 @@
         .arabic-translation { display: block; text-align: right; color: var(--secondary-text-color); border-bottom: 1px dashed #ccc; margin-bottom: 15px; padding-bottom: 5px; font-size: 1.05em; font-weight: bold; }
         .dialogue-line { display: flex; margin-bottom: 10px; background: #f9f9f9; padding: 15px; border-radius: 10px; direction: ltr; }
         .speaker { font-weight: bold; color: var(--accent-color); min-width: 80px; text-align: left; margin-right: 10px; }
+        
     </style>
+    <style>
+        /* ===== Mobile overflow / drift fix ===== */
+html, body { overflow-x: hidden; }
+* { box-sizing: border-box; }
+
+/* Make common containers never exceed the screen */
+.container, .wrap, .content, .main, body > div {
+  max-width: 100%;
+}
+
+/* Prevent any element from forcing horizontal scroll */
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix long text/URLs from pushing width */
+p, h1, h2, h3, h4, h5, h6, div, span, a, button {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* If you use cards/grids/sticky toolbars */
+.controls, .header, .search {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Mobile-specific tightening */
+@media (max-width: 600px) {
+  body { padding: 10px !important; }
+  .container { padding: 14px !important; border-width: 2px !important; border-radius: 16px !important; }
+}
+</style>
 </head>
 <body>
-
 <style>
   /* تنسيق شاشة القفل */
   #lockScreen {
