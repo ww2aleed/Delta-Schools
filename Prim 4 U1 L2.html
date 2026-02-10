@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Unit 1 - Lesson 2: A Visit to the Village</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fdfdfd; --card-color: #ffffff; --accent-color: #388e3c; 
+            --text-color: #212121; --highlight-color: #e8f5e9; --speak-highlight: #2e7d32; 
+            --play-all-btn: #43a047; --secondary-text-color: #455a64; --border-color: #a5d6a7; 
+        }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; text-align: center; color: var(--text-color); }
+        .container { max-width: 1000px; margin: 0 auto 50px auto; background-color: var(--card-color); border-radius: 20px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); padding: 40px; border: 5px solid var(--accent-color); }
+        h1 { color: var(--accent-color); font-size: 2.2em; margin-bottom: 5px; }
+        h2 { color: #1b5e20; border-bottom: 2px solid #81c784; display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        h3 { background-color: var(--highlight-color); padding: 12px; border-radius: 10px; margin-top: 30px; text-align: right; direction: ltr; font-size: 1.5em; border-left: 5px solid var(--accent-color); }
+        .speech-controls { background: #f1f8e9; padding: 15px; border-radius: 15px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; border: 1px solid var(--border-color); }
+        .control-group { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; text-align: right; direction: ltr; border-radius: 15px; overflow: hidden; }
+        th, td { border: 1px solid var(--border-color); padding: 12px; }
+        th { background-color: var(--accent-color); color: white; }
+        td:nth-child(odd) { background-color: #f9fbe7; }
+        .play-btn { background-color: var(--play-all-btn); color: white; border: none; padding: 12px 25px; border-radius: 12px; cursor: pointer; font-size: 1.1em; box-shadow: 0 4px #2e7d32; margin: 10px 0; }
+        .play-btn:active { transform: translateY(2px); box-shadow: 0 2px #2e7d32; }
+        
+        /* تصميم زر القسم */
+        .section-play-btn { background-color: #558b2f; padding: 8px 15px; font-size: 0.9em; margin: 10px 0; box-shadow: 0 3px #33691e; }
+        
+        /* زر الإيقاف العائم */
+        #floating-stop-btn {
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #c62828; color: white; border: none; 
+            border-radius: 50%; width: 65px; height: 65px; 
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            display: none; z-index: 9999; font-weight: bold;
+            transition: transform 0.2s;
+        }
+        #floating-stop-btn:active { transform: scale(0.9); }
+
+        .vocab-element, .english-sentence { cursor: pointer; transition: 0.2s; padding: 2px 6px; border-radius: 4px; display: inline-block; font-family: 'Roboto', sans-serif; font-weight: 700; color: #1565c0; }
+        .english-sentence { display: block; text-align: left; font-size: 1.15em; margin-bottom: 5px; color: #212121; line-height: 1.6; }
+        .speaking-highlight { background-color: var(--speak-highlight) !important; color: white !important; }
+        .arabic-translation { display: block; text-align: right; color: #616161; border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 5px; font-size: 1em; }
+        #story-container { text-align: left; background: #fafafa; border: 2px dashed var(--accent-color); padding: 25px; border-radius: 15px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+
+
+<style>
+  /* تنسيق شاشة القفل */
+  #lockScreen {
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* تم إصلاح الرابط هنا ليكون سطر واحد */
+    background-image: url('https://i.ibb.co/0T6tY6v/Whats-App-Image-2026-01-25-at-8-02-36-AM-1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 10000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: opacity 0.4s ease; /* تأثير تلاشي أنعم */
+  }
+
+  #lockScreen::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: -1;
+  }
+
+  /* صندوق كلمة المرور */
+  .lock-box {
+    background: rgba(255, 255, 255, 0.98); 
+    padding: 30px 20px; 
+    border-radius: 20px; 
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    width: 280px; 
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lock-box h2 { margin: 0; color: #166534; font-size: 20px; }
+  .lock-box p { color: #666; font-size: 13px; margin: 8px 0 20px; }
+
+  .lock-box input {
+    width: 90%; 
+    padding: 12px; 
+    margin-bottom: 15px; 
+    border: 2px solid #eee; 
+    border-radius: 10px; 
+    font-size: 16px; 
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .lock-box input:focus {
+    border-color: #166534;
+  }
+
+  .lock-box button {
+    background: #166534; 
+    color: white; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    width: 100%; 
+    font-size: 15px;
+    transition: background 0.3s;
+  }
+
+  .lock-box button:hover {
+    background: #15803d;
+  }
+
+  /* تنسيق المحتوى بعد الفتح (مدارس دلتا) */
+  .teacher-branding {
+    background: white; 
+    border-radius: 20px; 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    margin: 60px auto; 
+    width: 90%;
+    max-width: 400px; 
+    border-bottom: 5px solid #fbbf24; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .teacher-branding img { 
+    width: 130px; 
+    height: 130px; 
+    border-radius: 15px; 
+    object-fit: contain; 
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+  }
+
+  .teacher-details h3 { margin: 0; color: #166534; font-size: 24px; }
+  .teacher-details p { margin: 5px 0; font-size: 18px; color: #444; }
+</style>
+
+<style>
+  /* ... (نفس تنسيقات شاشة القفل السابقة تبقى كما هي) ... */
+
+  /* تنسيق بطاقة مدارس دلتا: اللوجو بجانب النص */
+  .teacher-branding {
+    background: white; 
+    border-radius: 20px; 
+    padding: 20px 30px; 
+    display: flex; 
+    flex-direction: row; /* جعل العناصر بجانب بعضها */
+    align-items: center; 
+    justify-content: center; /* توسيط المحتوى بالكامل */
+    margin: 60px auto; 
+    width: fit-content; /* جعل العرض على مقاس المحتوى */
+    min-width: 350px;
+    border-bottom: 5px solid #fbbf24; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    direction: ltr; /* لضمان بقاء اللوجو يسار النص */
+  }
+
+  .teacher-branding img { 
+    width: 90px; /* حجم متناسق للوضع الأفقي */
+    height: 90px; 
+    border-radius: 12px; 
+    object-fit: contain; 
+    margin-right: 20px; /* مسافة بين اللوجو والنص */
+    border: 1px solid #f0f0f0;
+  }
+
+  .teacher-details {
+    text-align: left; /* محاذاة النص لليسار ليتناسب مع اللوجو */
+  }
+
+  .teacher-details h3 { 
+    margin: 0; 
+    color: #166534; 
+    font-size: 24px; 
+    line-height: 1.2;
+  }
+
+  .teacher-details p { 
+    margin: 2px 0 0 0; 
+    font-size: 18px; 
+    color: #444; 
+    font-weight: bold;
+  }
+
+  /* ... (بقية التنسيقات) ... */
+</style>
+
+<div class="teacher-branding">
+  <img src="https://i.ibb.co/QF17ngZb/Whats-App-Image-2026-01-25-at-8-02-35-AM.jpg" alt="Delta Schools Logo">
+  <div class="teacher-details">
+    <h3>Delta Schools</h3>
+    
+  </div>
+</div>
+</div>
+
+<script>
+  function validateAccess() {
+    const inputField = document.getElementById('passField');
+    const code = inputField.value;
+    const masterKey = "Delta Schools"; 
+    
+    if(code === masterKey) {
+      const screen = document.getElementById('lockScreen');
+      screen.style.opacity = '0';
+      setTimeout(() => {
+        screen.style.display = 'none';
+      }, 400);
+    } else {
+      // تغيير لون الإطار للأحمر للتنبيه
+      inputField.style.borderColor = "#ef4444";
+      alert("⚠️ عذراً، كلمة المرور خاطئة!");
+      inputField.value = ""; // مسح الخانة للمحاولة مرة أخرى
+      inputField.focus();
+    }
+  }
+
+  // دعم زر Enter
+  document.getElementById('passField').addEventListener("keypress", function(e) {
+    if (e.key === "Enter") { validateAccess(); }
+  });
+</script><button id="floating-stop-btn" onclick="stopSpeech()">إيقاف ⏹️</button>
+
+<div class="container">
+    <h1>🌍 Unit 1: My Environment</h1>
+    <h2>Lesson 2: A Visit to the Village</h2>
+    
+    <div class="speech-controls">
+        <div class="control-group"><label>🗣️ اللكنة:</label>
+            <select id="voice-select"><option value="en-US">American (US) 🇺🇸</option><option value="en-GB">British (UK) 🇬🇧</option></select>
+        </div>
+        <div class="control-group"><label>⚡ السرعة:</label>
+            <input type="range" id="speed-slider" min="0.5" max="1.2" value="0.8" step="0.1">
+        </div>
+        <button id="stop-btn" onclick="stopSpeech()" style="background:#c62828; color:white; border:none; border-radius:8px; padding:8px 15px; cursor:pointer;">إيقاف ⏹️</button>
+    </div>
+
+    <button id="play-all-vocab-btn" class="play-btn">▶️ نطق جميع المفردات والأفعال</button>
+
+    <h3>📚 Key Vocabulary (المفردات الأساسية)</h3>
+    <button class="play-btn section-play-btn" onclick="playSection('main-vocab')">▶️ نطق هذا القسم</button>
+    <table id="main-vocab"><tbody></tbody></table>
+
+    <h3>➕ Extra Vocabulary (مفردات إضافية)</h3>
+    <button class="play-btn section-play-btn" onclick="playSection('extra-vocab')">▶️ نطق هذا القسم</button>
+    <table id="extra-vocab"><tbody></tbody></table>
+
+    <h3>🔗 Important Expressions (تعبيرات وحروف جر)</h3>
+    <button class="play-btn section-play-btn" onclick="playSection('expressions')">▶️ نطق هذا القسم</button>
+    <table id="expressions"><tbody></tbody></table>
+
+    <h3>🔄 Conjugation of Verbs (تصريف الأفعال)</h3>
+    <button class="play-btn section-play-btn" onclick="playSection('verbs')">▶️ نطق هذا القسم</button>
+    <table id="verbs">
+        <thead><tr><th>Present (مضارع)</th><th>Past (ماضي)</th><th>المعنى</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>📖 A Day in the Village (نص القراءة)</h3>
+    <button id="play-all-story-btn" class="play-btn" style="background:#0277bd; box-shadow: 0 4px #01579b;">🎧 تشغيل النص كاملاً</button>
+    <div id="story-container"></div>
+</div>
+
+<script>
+    const mainVocab = [
+        {en:"weather", ar:"طقس"}, {en:"forest", ar:"غابة"},
+        {en:"seller", ar:"بائع"}, {en:"path", ar:"طريق / ممر"},
+        {en:"friendly", ar:"ودود"}, {en:"traveler", ar:"مسافر"}
+    ];
+
+    const extraVocab = [
+        {en:"fresh", ar:"نقى / عذب"}, {en:"excited", ar:"متحمس"},
+        {en:"rest", ar:"راحة"}, {en:"clear", ar:"صافي"}
+    ];
+
+    const expressions = [
+        {en:"take photos", ar:"يلتقط صور"}, {en:"beside the river", ar:"بجانب النهر"},
+        {en:"far from", ar:"بعيداً عن"}, {en:"compared to", ar:"مقارنة بـ"}
+    ];
+
+    const verbs = [
+        {p:"smell", s:"smelled", ar:"يشم"}, {p:"notice", s:"noticed", ar:"يلاحظ"},
+        {p:"sing", s:"sang", ar:"يغني"}, {p:"tell", s:"told", ar:"يخبر"},
+        {p:"buy", s:"bought", ar:"يشتري"}
+    ];
+
+    const story = [
+        {en:"Last weekend, Ahmed and Omar visited a small village near the city.", ar:"في عطلة الأسبوع الماضي، زار أحمد وعمر قرية صغيرة بالقرب من المدينة."},
+        {en:"The weather was sunny. They were excited.", ar:"كان الجو مشمساً. شعروا بالحماس."},
+        {en:"They walked beside the river and noticed how clean and fresh the air was compared to the busy city.", ar:"تجولوا بجانب النهر ولاحظوا مدى نقاء وصفاء الهواء مقارنة بالمدينة المزدحمة."},
+        {en:"Omar took photos of houses, trees, and the clear water.", ar:"التقط عمر صوراً للمنازل والأشجار والمياه الصافية."},
+        {en:"Ahmed smelled the colorful flowers beside the path.", ar:"استنشق أحمد رائحة الزهور الزاهية على جانب الطريق."},
+        {en:"Not far from the village, they saw a small forest with tall trees and many birds.", ar:"على مقربة من القرية شاهدوا غابة صغيرة بها أشجار عالية وطيور كثيرة."},
+        {en:"A farmer told them a story about an oasis in the desert where travelers could find water and rest.", ar:"حكى لهما أحد المزارعين قصة عن واحة في الصحراء حيث يجد المسافرون الماء والراحة."},
+        {en:"In the afternoon, they went to the market and bought fresh fruit such as apples, oranges, and bananas.", ar:"في فترة ما بعد الظهيرة ذهبوا إلى السوق واشتروا فاكهة طازجة كالتفاح والبرتقال والموز."},
+        {en:"The sellers were friendly and told them stories about village life.", ar:"كان البائعون ودودين وأخبروهم بقصص عن حياة القرية."},
+        {en:"Ahmed and Omar enjoyed the quiet streets, listened to birds singing, and learned many new things about the people who lived there.", ar:"استمتع أحمد وعمر بالشوارع الهادئة، واستمعوا إلى زقزقة الطيور، وتعرفوا على الكثير من الأشياء الجديدة عن الأشخاص الذين يعيشون هناك."}
+    ];
+
+    const synth = window.speechSynthesis;
+    let speakQueue = [];
+    let isAutoPlaying = false;
+
+    function speak(text, el) {
+        stopSpeech();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = document.getElementById('voice-select').value;
+        utter.rate = document.getElementById('speed-slider').value;
+        if(el) { el.classList.add('speaking-highlight'); utter.onend = () => el.classList.remove('speaking-highlight'); }
+        synth.speak(utter);
+    }
+
+    function stopSpeech() {
+        synth.cancel();
+        isAutoPlaying = false;
+        document.getElementById('floating-stop-btn').style.display = 'none';
+        document.querySelectorAll('.speaking-highlight').forEach(el => el.classList.remove('speaking-highlight'));
+    }
+
+    function buildTable(data, id) {
+        const tb = document.querySelector(`#${id} tbody`);
+        for(let i=0; i<data.length; i+=2) {
+            const tr = document.createElement('tr');
+            [i, i+1].forEach(idx => {
+                if(data[idx]) {
+                    const tdEn = document.createElement('td');
+                    const span = document.createElement('span'); span.className='vocab-element'; span.innerText=data[idx].en;
+                    span.onclick = () => speak(data[idx].en, span);
+                    tdEn.appendChild(span);
+                    const tdAr = document.createElement('td'); tdAr.innerText=data[idx].ar;
+                    tr.append(tdEn, tdAr); speakQueue.push(span);
+                }
+            });
+            tb.appendChild(tr);
+        }
+    }
+
+    window.onload = () => {
+        buildTable(mainVocab, 'main-vocab');
+        buildTable(extraVocab, 'extra-vocab');
+        
+        const expTb = document.querySelector('#expressions tbody');
+        expressions.forEach(e => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><span class="vocab-element">${e.en}</span></td><td>${e.ar}</td>`;
+            const s = tr.querySelector('.vocab-element'); s.onclick=()=>speak(e.en, s);
+            speakQueue.push(s); expTb.appendChild(tr);
+        });
+
+        const vTb = document.querySelector('#verbs tbody');
+        verbs.forEach(v => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><span class="vocab-element">${v.p}</span></td><td><span class="vocab-element">${v.s}</span></td><td>${v.ar}</td>`;
+            const el1 = tr.querySelectorAll('.vocab-element')[0];
+            const el2 = tr.querySelectorAll('.vocab-element')[1];
+            el1.onclick=()=>speak(v.p, el1); el2.onclick=()=>speak(v.s, el2);
+            speakQueue.push(el1, el2); vTb.appendChild(tr);
+        });
+
+        const sBox = document.getElementById('story-container');
+        story.forEach(s => {
+            const div = document.createElement('div');
+            div.innerHTML = `<span class="english-sentence">${s.en}</span><span class="arabic-translation">${s.ar}</span>`;
+            const sent = div.querySelector('.english-sentence');
+            sent.onclick = () => speak(s.en, sent);
+            sBox.appendChild(div);
+        });
+    };
+
+    const playList = (elements) => {
+        stopSpeech();
+        isAutoPlaying = true;
+        document.getElementById('floating-stop-btn').style.display = 'block';
+        let i = 0;
+        function next() {
+            if(i < elements.length && isAutoPlaying) {
+                const utter = new SpeechSynthesisUtterance(elements[i].innerText);
+                utter.lang = document.getElementById('voice-select').value;
+                utter.rate = document.getElementById('speed-slider').value;
+                elements[i].classList.add('speaking-highlight');
+                elements[i].scrollIntoView({behavior:"smooth", block:"center"});
+                utter.onend = () => { 
+                    elements[i].classList.remove('speaking-highlight'); 
+                    i++; 
+                    if(i < elements.length) next();
+                    else stopSpeech();
+                };
+                synth.speak(utter);
+            } else {
+                stopSpeech();
+            }
+        }
+        next();
+    };
+
+    function playSection(id) {
+        const elements = document.querySelectorAll(`#${id} .vocab-element`);
+        playList(elements);
+    }
+
+    document.getElementById('play-all-vocab-btn').onclick = () => playList(speakQueue);
+    document.getElementById('play-all-story-btn').onclick = () => playList(document.querySelectorAll('.english-sentence'));
+</script>
+</body>
+</html>
