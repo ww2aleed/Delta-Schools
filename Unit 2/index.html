@@ -1,3 +1,7 @@
+<!-- =========================
+     Unit 2/index.html
+     Put this inside: Unit 2/index.html
+     ========================= -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,21 +9,62 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Delta Schools | Unit 2</title>
 <style>
-body{margin:0;font-family:system-ui,Arial;background:#f6f8fc;color:#0f172a}
-.wrap{max-width:900px;margin:auto;padding:20px}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
-.btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;background:#fff;font-weight:700;text-decoration:none;color:#0f172a}
-h1{margin-top:0}
+:root{--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#475569;--brand:#166534;--line:#e2e8f0;--shadow:0 10px 25px rgba(0,0,0,.08);--radius:18px;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Arial;background:var(--bg);color:var(--text);}
+.wrap{max-width:1000px;margin:auto;padding:20px}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:700;text-decoration:none;color:var(--text)}
+.btn.primary{background:var(--brand);color:#fff;border-color:rgba(22,101,52,.25)}
+.grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.tag{display:inline-flex;gap:8px;font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:6px 10px;background:#fbfdff;margin-bottom:10px}
+.card h2{margin:0 0 8px}
+.card p{margin:0 0 12px;color:var(--muted)}
+.footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Unit 2</h1>
-  <div class="card">
-    <p>📘 Upload Unit 2 lesson files into this folder.</p>
-    <p>Then add lesson links here.</p>
-    <a class="btn" href="../">⬅ Back to Units</a>
+  <div class="top">
+    <div>
+      <h1 style="margin:0">Unit 2</h1>
+      <div style="color:var(--muted);margin-top:4px">Primary 4 • English</div>
+    </div>
+    <a class="btn" href="../">⬅ Back to Home</a>
   </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="tag">✅ Lesson</div>
+      <h2>Lesson 1</h2>
+      <p>Vocabulary & reading</p>
+      <a class="btn primary" href="Lesson%201.html">Open Lesson 1 ▶</a>
+    </div>
+
+    <div class="card">
+      <div class="tag">✅ Lesson</div>
+      <h2>Lesson 2</h2>
+      <p>Speaking & listening</p>
+      <a class="btn primary" href="Lesson%202.html">Open Lesson 2 ▶</a>
+    </div>
+
+    <div class="card">
+      <div class="tag">✅ Lesson</div>
+      <h2>Lesson 3</h2>
+      <p>Reading practice</p>
+      <a class="btn primary" href="Lesson%203.html">Open Lesson 3 ▶</a>
+    </div>
+
+    <div class="card">
+      <div class="tag">✅ Lesson</div>
+      <h2>Lesson 4 & 5</h2>
+      <p>Review & practice</p>
+      <a class="btn primary" href="Lesson%204%20%26%205.html">Open Lesson 4 & 5 ▶</a>
+    </div>
+  </div>
+
+  <div class="footer">Choose a lesson to start</div>
 </div>
 </body>
 </html>
