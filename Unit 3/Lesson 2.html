@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥪 Unit 3 - Lesson 2: Shopping for a Picnic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #e0f7fa; --card-color: #ffffff; --accent-color: #00796b; 
+            --text-color: #263238; --highlight-color: #b2dfdb; --speak-highlight: #004d40; 
+            --play-btn-color: #00897b; --secondary-text-color: #455a64; --border-color: #80cbc4; 
+        }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-color); margin: 0; padding: 20px; text-align: center; color: var(--text-color); }
+        .container { max-width: 1000px; margin: 0 auto 50px auto; background-color: var(--card-color); border-radius: 20px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); padding: 40px; border: 5px solid var(--accent-color); }
+        h1 { color: var(--accent-color); font-size: 2.2em; margin-bottom: 5px; }
+        h2 { color: #004d40; border-bottom: 2px solid var(--border-color); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        
+        .section-header { display: flex; justify-content: space-between; align-items: center; background-color: var(--highlight-color); padding: 10px 20px; border-radius: 10px; margin-top: 30px; border-left: 5px solid var(--accent-color); }
+        h3 { margin: 0; font-size: 1.4em; color: #004d40; }
+        
+        .section-play-btn { background-color: var(--play-btn-color); color: white; border: none; padding: 5px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9em; font-weight: bold; box-shadow: 0 3px #004d40; }
+        .section-play-btn:active { transform: translateY(2px); box-shadow: 0 1px #004d40; }
+
+        /* زر الإيقاف العائم */
+        #floating-stop-btn {
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #c62828; color: white; border: none; 
+            border-radius: 50%; width: 65px; height: 65px; 
+            cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            display: none; z-index: 9999; font-weight: bold;
+            transition: transform 0.2s;
+        }
+        #floating-stop-btn:active { transform: scale(0.9); }
+
+        .speech-controls { background: #ffffff; padding: 15px; border-radius: 15px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; align-items: center; border: 2px solid var(--border-color); }
+        .control-group { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; text-align: right; direction: ltr; border-radius: 15px; overflow: hidden; }
+        th, td { border: 1px solid var(--border-color); padding: 12px; }
+        th { background-color: var(--accent-color); color: white; }
+        td:nth-child(odd) { background-color: #f1f8f9; }
+
+        .vocab-element, .english-sentence { cursor: pointer; transition: 0.2s; padding: 2px 6px; border-radius: 4px; display: inline-block; font-family: 'Roboto', sans-serif; font-weight: 700; color: #00695c; }
+        .english-sentence { display: block; text-align: left; font-size: 1.15em; margin-bottom: 5px; color: #212121; line-height: 1.8; }
+        .speaking-highlight { background-color: var(--speak-highlight) !important; color: white !important; }
+        .arabic-translation { display: block; text-align: right; color: #546e7a; border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 5px; font-size: 1.05em; }
+        
+        #story-container { text-align: left; background: #fafafa; border: 2px dashed var(--accent-color); padding: 25px; border-radius: 15px; margin-top: 10px; }
+        .speaker-name { font-weight: bold; color: var(--accent-color); margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+<style>
+  /* تنسيق شاشة القفل */
+  #lockScreen {
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* تم إصلاح الرابط هنا ليكون سطر واحد */
+    background-image: url('https://i.ibb.co/0T6tY6v/Whats-App-Image-2026-01-25-at-8-02-36-AM-1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 10000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: opacity 0.4s ease; /* تأثير تلاشي أنعم */
+  }
+
+  #lockScreen::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: -1;
+  }
+
+  /* صندوق كلمة المرور */
+  .lock-box {
+    background: rgba(255, 255, 255, 0.98); 
+    padding: 30px 20px; 
+    border-radius: 20px; 
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    width: 280px; 
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lock-box h2 { margin: 0; color: #166534; font-size: 20px; }
+  .lock-box p { color: #666; font-size: 13px; margin: 8px 0 20px; }
+
+  .lock-box input {
+    width: 90%; 
+    padding: 12px; 
+    margin-bottom: 15px; 
+    border: 2px solid #eee; 
+    border-radius: 10px; 
+    font-size: 16px; 
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .lock-box input:focus {
+    border-color: #166534;
+  }
+
+  .lock-box button {
+    background: #166534; 
+    color: white; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    width: 100%; 
+    font-size: 15px;
+    transition: background 0.3s;
+  }
+
+  .lock-box button:hover {
+    background: #15803d;
+  }
+
+  /* تنسيق المحتوى بعد الفتح (مدارس دلتا) */
+  .teacher-branding {
+    background: white; 
+    border-radius: 20px; 
+    padding: 25px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    margin: 60px auto; 
+    width: 90%;
+    max-width: 400px; 
+    border-bottom: 5px solid #fbbf24; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .teacher-branding img { 
+    width: 130px; 
+    height: 130px; 
+    border-radius: 15px; 
+    object-fit: contain; 
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+  }
+
+  .teacher-details h3 { margin: 0; color: #166534; font-size: 24px; }
+  .teacher-details p { margin: 5px 0; font-size: 18px; color: #444; }
+</style>
+
+
+<style>
+  /* ... (نفس تنسيقات شاشة القفل السابقة تبقى كما هي) ... */
+
+  /* تنسيق بطاقة مدارس دلتا: اللوجو بجانب النص */
+  .teacher-branding {
+    background: white; 
+    border-radius: 20px; 
+    padding: 20px 30px; 
+    display: flex; 
+    flex-direction: row; /* جعل العناصر بجانب بعضها */
+    align-items: center; 
+    justify-content: center; /* توسيط المحتوى بالكامل */
+    margin: 60px auto; 
+    width: fit-content; /* جعل العرض على مقاس المحتوى */
+    min-width: 350px;
+    border-bottom: 5px solid #fbbf24; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    direction: ltr; /* لضمان بقاء اللوجو يسار النص */
+  }
+
+  .teacher-branding img { 
+    width: 90px; /* حجم متناسق للوضع الأفقي */
+    height: 90px; 
+    border-radius: 12px; 
+    object-fit: contain; 
+    margin-right: 20px; /* مسافة بين اللوجو والنص */
+    border: 1px solid #f0f0f0;
+  }
+
+  .teacher-details {
+    text-align: left; /* محاذاة النص لليسار ليتناسب مع اللوجو */
+  }
+
+  .teacher-details h3 { 
+    margin: 0; 
+    color: #166534; 
+    font-size: 24px; 
+    line-height: 1.2;
+  }
+
+  .teacher-details p { 
+    margin: 2px 0 0 0; 
+    font-size: 18px; 
+    color: #444; 
+    font-weight: bold;
+  }
+
+  /* ... (بقية التنسيقات) ... */
+</style>
+
+<div class="teacher-branding">
+  <img src="https://i.ibb.co/QF17ngZb/Whats-App-Image-2026-01-25-at-8-02-35-AM.jpg" alt="Delta Schools Logo">
+  <div class="teacher-details">
+    <h3>Delta Schools</h3>
+    
+  </div>
+</div>
+</div>
+
+<script>
+  function validateAccess() {
+    const inputField = document.getElementById('passField');
+    const code = inputField.value;
+    const masterKey = "Delta Schools"; 
+    
+    if(code === masterKey) {
+      const screen = document.getElementById('lockScreen');
+      screen.style.opacity = '0';
+      setTimeout(() => {
+        screen.style.display = 'none';
+      }, 400);
+    } else {
+      // تغيير لون الإطار للأحمر للتنبيه
+      inputField.style.borderColor = "#ef4444";
+      alert("⚠️ عذراً، كلمة المرور خاطئة!");
+      inputField.value = ""; // مسح الخانة للمحاولة مرة أخرى
+      inputField.focus();
+    }
+  }
+
+  // دعم زر Enter
+  document.getElementById('passField').addEventListener("keypress", function(e) {
+    if (e.key === "Enter") { validateAccess(); }
+  });
+</script>
+
+<button id="floating-stop-btn" onclick="stopAllSpeech()">إيقاف ⏹️</button>
+
+<div class="container">
+    <h1>🌍 Unit 3: Sharing with Families</h1>
+    <h2>Lesson 2: Shopping for a Picnic</h2>
+    
+    <div class="speech-controls">
+        <div class="control-group"><label>🗣️ اللكنة:</label>
+            <select id="voice-select"><option value="en-US">American (US) 🇺🇸</option><option value="en-GB">British (UK) 🇬🇧</option></select>
+        </div>
+        <div class="control-group"><label>⚡ السرعة:</label>
+            <input type="range" id="speed-slider" min="0.5" max="1.2" value="0.8" step="0.1">
+        </div>
+        <button id="stop-btn" onclick="stopAllSpeech()" style="background:#c62828; color:white; border:none; border-radius:8px; padding:10px 20px; cursor:pointer; font-weight:bold;">إيقاف النطق ⏹️</button>
+    </div>
+
+    <div class="section-header">
+        <h3>📚 Key Vocabulary (المفردات الأساسية)</h3>
+        <button class="section-play-btn" onclick="playSection('main-vocab')">▶️ نطق القسم</button>
+    </div>
+    <table id="main-vocab"><tbody></tbody></table>
+
+    <div class="section-header">
+        <h3>➕ Extra Vocabulary (مفردات إضافية)</h3>
+        <button class="section-play-btn" onclick="playSection('extra-vocab')">▶️ نطق القسم</button>
+    </div>
+    <table id="extra-vocab"><tbody></tbody></table>
+
+    <div class="section-header">
+        <h3>🔗 Important Expressions (تعبيرات هامة)</h3>
+        <button class="section-play-btn" onclick="playSection('expressions')">▶️ نطق القسم</button>
+    </div>
+    <table id="expressions"><tbody></tbody></table>
+
+    <div class="section-header">
+        <h3>🔄 Conjugation of Verbs (تصريف الأفعال)</h3>
+        <button class="section-play-btn" onclick="playSection('verbs')">▶️ نطق القسم</button>
+    </div>
+    <table id="verbs">
+        <thead><tr><th>Present (مضارع)</th><th>Past (ماضي)</th><th>المعنى</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="section-header">
+        <h3>📖 Preparing for the Picnic (الإعداد للنزهة)</h3>
+        <button class="section-play-btn" onclick="playSection('story-container')">🎧 نطق المحادثة كاملة</button>
+    </div>
+    <div id="story-container"></div>
+</div>
+
+<script>
+    const mainVocab = [
+        {en:"a carton of milk", ar:"علبة لبن كرتون"}, {en:"a bar of chocolate", ar:"قطعة من الشيكولاته"},
+        {en:"a pack of biscuits", ar:"علبة بسكويت"}, {en:"a slice of bread", ar:"قطعة من الخبز"},
+        {en:"a bottle of orange juice", ar:"زجاجة عصير برتقال"}, {en:"a piece of cheese", ar:"قطعة جبن"},
+        {en:"a kilo of apples", ar:"كيلو تفاح"}
+    ];
+
+    const extraVocab = [
+        {en:"shopping list", ar:"قائمة التسوق"}, {en:"picnic", ar:"نزهة خلوية"},
+        {en:"excited", ar:"متحمس"}, {en:"dark chocolate", ar:"شيكولاتة داكنة"},
+        {en:"dessert", ar:"تحلية"}, {en:"kind", ar:"نوع"}
+    ];
+
+    const expressions = [
+        {en:"That sounds fun!", ar:"هذا يبدو ممتعاً!"}, {en:"Good idea!", ar:"فكرة جيدة"},
+        {en:"go on a picnic", ar:"يذهب في نزهة خلوية"}, {en:"prepare for", ar:"يجهز لـ"},
+        {en:"What else?", ar:"ماذا أيضاً؟"}, {en:"a pack of", ar:"علبة من"}
+    ];
+
+    const verbs = [
+        {p:"add", s:"added", ar:"يضيف"}, {p:"remind", s:"reminded", ar:"يذكر"},
+        {p:"take", s:"took", ar:"يأخذ"}, {p:"bring", s:"brought", ar:"يحضر"}
+    ];
+
+    const story = [
+        {s:"Noura", en:"Laila, I want to tell you how I prepared for the picnic with my mother last weekend.", ar:"ليلى، أريد أن أخبرك كيف استعددت للنزهة مع أمي في عطلة نهاية الأسبوع الماضي."},
+        {s:"Laila", en:"Oh, that sounds fun! What did you do first?", ar:"صحيح، هذا يبدو ممتعاً! ماذا فعلتم أولاً؟"},
+        {s:"Noura", en:"First, we bought a carton of milk for tea. Then my mother chose a bar of chocolate for dessert.", ar:"أولاً، اشترينا عبوة حليب لصنع الشاي. ثم اختارت أمي قطعة شيكولاته للتحلية."},
+        {s:"Laila", en:"Which kind did you get?", ar:"أي نوع اشتريتم؟"},
+        {s:"Noura", en:"The milk chocolate one. We also packed a big pack of biscuits because my cousins love them.", ar:"الشيكولاته بالحليب. كما اشترينا علبة كبيرة من البسكويت لأن أبناء عمي يحبونه."},
+        {s:"Laila", en:"Good idea! What else did you add?", ar:"فكرة جيدة! ماذا أضفتم بعد ذلك؟"},
+        {s:"Noura", en:"We took a bottle of orange juice, a slice of bread, and a piece of cheese for each sandwich. My mother also reminded me to bring some butter.", ar:"أخذنا زجاجة عصير برتقال، وقطعة خبز، وقطعة جبن لكل سندوتش. كما ذكرتني أمي أن أحضر بعض الزبدة."},
+        {s:"Laila", en:"Did you add fruit too?", ar:"هل أضفتم الفاكهة أيضاً؟"},
+        {s:"Noura", en:"Yes! We packed a kilo of apples for everyone. It was a lot of work, but we were excited and happy to prepare it together.", ar:"نعم! وضعنا كيلو من التفاح للجميع. كان ذلك عملاً كثيراً، لكننا كنا متحمسين وسعداء ونحن نجهزه معاً."}
+    ];
+
+    const synth = window.speechSynthesis;
+    let isPlayingQueue = false;
+
+    function stopAllSpeech() {
+        synth.cancel();
+        isPlayingQueue = false;
+        document.getElementById('floating-stop-btn').style.display = 'none';
+        document.querySelectorAll('.speaking-highlight').forEach(el => el.classList.remove('speaking-highlight'));
+    }
+
+    function speak(text, el) {
+        stopAllSpeech();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = document.getElementById('voice-select').value;
+        utter.rate = document.getElementById('speed-slider').value;
+        if(el) { el.classList.add('speaking-highlight'); utter.onend = () => el.classList.remove('speaking-highlight'); }
+        synth.speak(utter);
+    }
+
+    function buildTable(data, id) {
+        const tb = document.querySelector(`#${id} tbody`);
+        for(let i=0; i<data.length; i+=2) {
+            const tr = document.createElement('tr');
+            [i, i+1].forEach(idx => {
+                if(data[idx]) {
+                    const tdEn = document.createElement('td');
+                    const span = document.createElement('span'); span.className='vocab-element section-item'; span.innerText=data[idx].en;
+                    span.onclick = () => speak(data[idx].en, span);
+                    tdEn.appendChild(span);
+                    const tdAr = document.createElement('td'); tdAr.innerText=data[idx].ar;
+                    tr.append(tdEn, tdAr);
+                }
+            });
+            tb.appendChild(tr);
+        }
+    }
+
+    window.onload = () => {
+        buildTable(mainVocab, 'main-vocab');
+        buildTable(extraVocab, 'extra-vocab');
+        
+        const expTb = document.querySelector('#expressions tbody');
+        expressions.forEach(e => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><span class="vocab-element section-item">${e.en}</span></td><td>${e.ar}</td>`;
+            const s = tr.querySelector('.vocab-element'); s.onclick=()=>speak(e.en, s);
+            expTb.appendChild(tr);
+        });
+
+        const vTb = document.querySelector('#verbs tbody');
+        verbs.forEach(v => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td><span class="vocab-element section-item">${v.p}</span></td><td><span class="vocab-element section-item">${v.s}</span></td><td>${v.ar}</td>`;
+            const els = tr.querySelectorAll('.vocab-element');
+            els[0].onclick=()=>speak(v.p, els[0]); els[1].onclick=()=>speak(v.s, els[1]);
+            vTb.appendChild(tr);
+        });
+
+        const sBox = document.getElementById('story-container');
+        story.forEach(s => {
+            const div = document.createElement('div');
+            div.innerHTML = `<span class="english-sentence section-item"><span class="speaker-name">${s.s}:</span> ${s.en}</span><span class="arabic-translation">${s.ar}</span>`;
+            const sent = div.querySelector('.english-sentence');
+            sent.onclick = () => speak(s.en, sent);
+            sBox.appendChild(div);
+        });
+    };
+
+    function playSection(sectionId) {
+        stopAllSpeech();
+        isPlayingQueue = true;
+        document.getElementById('floating-stop-btn').style.display = 'block';
+        const elements = document.querySelectorAll(`#${sectionId} .section-item`);
+        let i = 0;
+        function next() {
+            if(i < elements.length && isPlayingQueue) {
+                // نطق النص الإنجليزي فقط في حالة المحادثة (تجاهل اسم المتحدث)
+                const textToSpeak = elements[i].innerText.includes(':') ? elements[i].innerText.split(':')[1] : elements[i].innerText;
+                const utter = new SpeechSynthesisUtterance(textToSpeak);
+                utter.lang = document.getElementById('voice-select').value;
+                utter.rate = document.getElementById('speed-slider').value;
+                elements[i].classList.add('speaking-highlight');
+                elements[i].scrollIntoView({behavior:"smooth", block:"center"});
+                utter.onend = () => { 
+                    elements[i].classList.remove('speaking-highlight'); 
+                    i++; 
+                    if(isPlayingQueue) next(); 
+                    else stopAllSpeech();
+                };
+                synth.speak(utter);
+            } else {
+                stopAllSpeech();
+            }
+        }
+        next();
+    }
+</script>
+</body>
+</html>
